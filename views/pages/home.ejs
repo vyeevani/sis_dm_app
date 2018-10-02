@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+	<% include ../partials/stylesheets %>
+	<% include ../partials/scripts %>
+</head>
+
+<body ng-app="app" ng-controller="homePageController">
+
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-offset-1 col-xs-11">
+				<h1>
+					Active Orders
+				</h1>
+				<div class="card" style="width: 18rem; outline: 1px grey" ng-repeat="order in orders">
+			  		<div class="card-body">
+			    		<h5 class="card-title">{{order.table_id}}</h5>
+						<div ng-repeat="specific_orders in order.list">
+			    			<h6 class="card-subtitle mb-2 text-muted" style="margin-top:0">{{specific_orders}}</h6>
+						</div>
+			    		<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			    		<a href="#" class="card-link">Card link</a>
+			    		<a href="#" class="card-link">Another link</a>
+			  		</div>
+				</div>
+
+				<button ng-click="add_order_test()"> Add Order </button>
+				<h1 ng-init>
+
+				<h1>
+					Ready Orders
+				</h1>
+			</div>
+		</div>
+	</div>
+
+
+
+</body>
+
+</html>
