@@ -17,7 +17,7 @@
 				</h1>
 				<div class="card" style="width: 18rem; outline: 1px grey" ng-repeat="(key, order) in active_orders">
 			  		<div class="card-body">
-						<h1>{{order.priority}}</h1>
+						<h1 ngStyle="color:textColorClass(order.timestamp);">{{order.priority}}</h1>
 			    		<h5 class="card-title">{{order.table_id}}</h5>
 						<div ng-repeat="specific_orders in order.order_list">
 			    			<h6 class="card-subtitle mb-2 text-muted" style="margin-top:0">{{specific_orders}}</h6>

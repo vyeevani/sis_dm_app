@@ -45,6 +45,17 @@ angular.module('app.controllers.home', []).controller('homePageController', func
                 special_requests: $scope.special_requests, active_order:true, timestamp: timestamp});
     };
 
+    $scope.textColorClass = function(timestamp_order) {
+        var timestamp_now = (new Date()).getTime();
+        if (timestamp_now - timestamp_order > 1) {
+            console.log("hm");
+            return("green");
+        } else if (timestamp_now - timestamp_order > 1) {
+            return("yellow");
+        } else {
+            return("red");
+        }
+    };
 });
 
 
