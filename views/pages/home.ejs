@@ -15,21 +15,29 @@
 				<h1>
 					Active Orders
 				</h1>
-				<div class="card" style="width: 18rem; outline: 1px grey" ng-repeat="(key, order) in active_orders">
+				<div class="card" style="width: 20rem; outline: 1px grey" ng-repeat="(key, order) in active_orders">
 			  		<div class="card-body">
-						<h1 ngStyle="color:textColorClass(order.timestamp);">{{order.priority}}</h1>
-			    		<h5 class="card-title">{{order.table_id}}</h5>
-						<div ng-repeat="specific_orders in order.order_list">
-			    			<h6 class="card-subtitle mb-2 text-muted" style="margin-top:0">{{specific_orders}}</h6>
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-xs-2">
+									<h1>{{order.priority}}</h1>
+								</div>
+								<div class="col-xs-10">
+						    		<h5 class="card-title">{{order.table_id}}</h5>
+									<div ng-repeat="specific_orders in order.order_list">
+						    			<h6 class="card-subtitle mb-2 text-muted" style="margin-top:0">{{specific_orders}}</h6>
+									</div>
+						    		<p class="card-text">Special Requests: {{order.special_requests}}</p>
+									<a href="#" class="card-link" ng-click="order_ready(key)">Complete Order</a>
+						    		<a href="#" class="card-link" ng-click="delete_order(key)">Delete Order</a>
+								</div>
+							</div>
 						</div>
-			    		<p class="card-text">Special Requests: {{order.special_requests}}</p>
-						<a href="#" class="card-link" ng-click="order_ready(key)">Complete Order</a>
-			    		<a href="#" class="card-link" ng-click="delete_order(key)">Delete Order</a>
 			  		</div>
 				</div>
 
-				<button type="button" class="btn btn-info btn-lg" ng-click="add_order_test()">Add A Test Order</button>
 				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Submit New Order</button>
+
 
 				<!-- Modal -->
 				<div class="modal fade" id="myModal" role="dialog">
@@ -40,12 +48,226 @@
 							  	<h4 class="modal-title">Order Form</h4>
 							</div>
 							<div class="modal-body">
-								<input type="number" class="form-control" placeholder="Table Number" style="margin-bottom: 20px;" ng-model="table_id">
-								<input type="number" class="form-control" placeholder="# of Plain Dosas" style="margin-bottom: 20px;" ng-model="plain_dosa">
-								<input type="number" class="form-control" placeholder="# of Onion Dosas" style="margin-bottom: 20px;" ng-model="onion_dosa">
-								<input type="number" class="form-control" placeholder="# of Vadas" style="margin-bottom: 20px;" ng-model="vada">
-								<input type="text" class="form-control" placeholder="Special Requests" style="margin-bottom: 20px;" ng-model="special_requests">
-								<button class="btn btn-success btn-block" ng-click="add_order()"><span class="glyphicon glyphicon-off"></span>Create Order</button>
+								<div class="container-fluid">
+									<div class="row">
+										<input type="number" class="form-control" placeholder="Table Number" style="margin-bottom: 20px;" ng-model="table_id">
+									</div>
+									<div class="row">
+										<div class="col-xs-4"
+										<p1>Plain Dosa</p>
+										</div>
+										<div class="col-xs-offset-4 col-xs-1">
+											<button ng-click="plain_dosa = plain_dosa  + 1"> + </button>
+										</div>
+										<div class="col-xs-2">
+											<input type="number" class="form-control" style="margin-bottom: 20px;" ng-model="plain_dosa">
+										</div>
+										<div class="col-xs-1">
+											<button ng-click="plain_dosa = plain_dosa  - 1"> - </button>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-4"
+										<p1>Onion Dosa</p>
+										</div>
+										<div class="col-xs-offset-4 col-xs-1">
+											<button ng-click="onion_dosa = onion_dosa  + 1"> + </button>
+										</div>
+										<div class="col-xs-2">
+											<input type="number" class="form-control" style="margin-bottom: 20px;" ng-model="onion_dosa">
+										</div>
+										<div class="col-xs-1">
+											<button ng-click="onion_dosa = onion_dosa  - 1"> - </button>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-4"
+										<p1>Masala Dosa</p>
+										</div>
+										<div class="col-xs-offset-4 col-xs-1">
+											<button ng-click="masala_dosa = masala_dosa + 1"> + </button>
+										</div>
+										<div class="col-xs-2">
+											<input type="number" class="form-control" style="margin-bottom: 20px;" ng-model="masala_dosa">
+										</div>
+										<div class="col-xs-1">
+											<button ng-click="masala_dosa = masala_dosa - 1"> - </button>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-4"
+										<p1>Spring Dosa</p>
+										</div>
+										<div class="col-xs-offset-4 col-xs-1">
+											<button ng-click="spring_dosa = spring_dosa + 1"> + </button>
+										</div>
+										<div class="col-xs-2">
+											<input type="number" class="form-control" style="margin-bottom: 20px;" ng-model="spring_dosa">
+										</div>
+										<div class="col-xs-1">
+											<button ng-click="spring_dosa = spring_dosa - 1"> - </button>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-4"
+										<p1>Andhra Spicy Dosa</p>
+										</div>
+										<div class="col-xs-offset-4 col-xs-1">
+											<button ng-click="andhra_spicy_dosa = andhra_spicy_dosa + 1"> + </button>
+										</div>
+										<div class="col-xs-2">
+											<input type="number" class="form-control" style="margin-bottom: 20px;" ng-model="andhra_spicy_dosa">
+										</div>
+										<div class="col-xs-1">
+											<button ng-click="andhra_spicy_dosa = andhra_spicy_dosa - 1"> - </button>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-4"
+										<p1>Madurai Malli Dosa</p>
+										</div>
+										<div class="col-xs-offset-4 col-xs-1">
+											<button ng-click="madurai_masala_dosa = madurai_masala_dosa + 1"> + </button>
+										</div>
+										<div class="col-xs-2">
+											<input type="number" class="form-control" style="margin-bottom: 20px;" ng-model="madurai_masala_dosa">
+										</div>
+										<div class="col-xs-1">
+											<button ng-click="madurai_masala_dosa = madurai_masala_dosa - 1"> - </button>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-4"
+										<p1>Mysore Masala Dosa</p>
+										</div>
+										<div class="col-xs-offset-4 col-xs-1">
+											<button ng-click="mysore_masala_dosa = mysore_masala_dosa  + 1"> + </button>
+										</div>
+										<div class="col-xs-2">
+											<input type="number" class="form-control" style="margin-bottom: 20px;" ng-model="mysore_masala_dosa">
+										</div>
+										<div class="col-xs-1">
+											<button ng-click="mysore_masala_dosa = mysore_masala_dosa - 1"> - </button>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-4"
+										<p1>Cheese Dosa</p>
+										</div>
+										<div class="col-xs-offset-4 col-xs-1">
+											<button ng-click="cheese_dosa = cheese_dosa + 1"> + </button>
+										</div>
+										<div class="col-xs-2">
+											<input type="number" class="form-control" style="margin-bottom: 20px;" ng-model="cheese_dosa">
+										</div>
+										<div class="col-xs-1">
+											<button ng-click="cheese_dosa = cheese_dosa - 1"> - </button>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-4"
+										<p1>Chocolate Dosa</p>
+										</div>
+										<div class="col-xs-offset-4 col-xs-1">
+											<button ng-click="chocolate_dosa = chocolate_dosa + 1"> + </button>
+										</div>
+										<div class="col-xs-2">
+											<input type="number" class="form-control" style="margin-bottom: 20px;" ng-model="chocolate_dosa">
+										</div>
+										<div class="col-xs-1">
+											<button ng-click="chocolate_dosa = chocolate_dosa - 1"> - </button>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-4"
+										<p1>Plain Uthappam</p>
+										</div>
+										<div class="col-xs-offset-4 col-xs-1">
+											<button ng-click="plain_uthappam = plain_uthappam + 1"> + </button>
+										</div>
+										<div class="col-xs-2">
+											<input type="number" class="form-control" style="margin-bottom: 20px;" ng-model="plain_uthappam">
+										</div>
+										<div class="col-xs-1">
+											<button ng-click="plain_uthappam = plain_uthappam - 1"> - </button>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-4"
+										<p1>Onion Uthappam</p>
+										</div>
+										<div class="col-xs-offset-4 col-xs-1">
+											<button ng-click="onion_uthappam = onion_uthappam + 1"> + </button>
+										</div>
+										<div class="col-xs-2">
+											<input type="number" class="form-control" style="margin-bottom: 20px;" ng-model="onion_uthappam">
+										</div>
+										<div class="col-xs-1">
+											<button ng-click="onion_uthappam = onion_uthappam - 1"> - </button>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-4"
+										<p1>Chilli Uthappam</p>
+										</div>
+										<div class="col-xs-offset-4 col-xs-1">
+											<button ng-click="chilli_uthappam = chilli_uthappam + 1"> + </button>
+										</div>
+										<div class="col-xs-2">
+											<input type="number" class="form-control" style="margin-bottom: 20px;" ng-model="chilli_uthappam">
+										</div>
+										<div class="col-xs-1">
+											<button ng-click="chilli_uthappam = chilli_uthappam - 1"> - </button>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-4"
+										<p1>Podi Uthappam</p>
+										</div>
+										<div class="col-xs-offset-4 col-xs-1">
+											<button ng-click="podi_uthappam = podi_uthappam + 1"> + </button>
+										</div>
+										<div class="col-xs-2">
+											<input type="number" class="form-control" style="margin-bottom: 20px;" ng-model="podi_uthappam">
+										</div>
+										<div class="col-xs-1">
+											<button ng-click="podi_uthappam = podi_uthappam - 1"> - </button>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-4"
+										<p1>Tomato Uthappam</p>
+										</div>
+										<div class="col-xs-offset-4 col-xs-1">
+											<button ng-click="tomato_uthappam = tomato_uthappam + 1"> + </button>
+										</div>
+										<div class="col-xs-2">
+											<input type="number" class="form-control" style="margin-bottom: 20px;" ng-model="tomato_uthappam">
+										</div>
+										<div class="col-xs-1">
+											<button ng-click="tomato_uthappam = tomato_uthappam - 1"> - </button>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-4"
+										<p1>Kara Uthappam</p>
+										</div>
+										<div class="col-xs-offset-4 col-xs-1">
+											<button ng-click="kara_uthappam = kara_uthappam + 1"> + </button>
+										</div>
+										<div class="col-xs-2">
+											<input type="number" class="form-control" style="margin-bottom: 20px;" ng-model="kara_uthappam">
+										</div>
+										<div class="col-xs-1">
+											<button ng-click="kara_uthappam = kara_uthappam - 1"> - </button>
+										</div>
+									</div>
+
+									<div class="row">
+										<input type="text" class="form-control" placeholder="Special Requests" style="margin-bottom: 20px;" ng-model="special_requests">
+									</div>
+									<button class="btn btn-success btn-block" ng-click="add_order()" data-dismiss="modal"><span class="glyphicon glyphicon-off"></span>Create Order</button>
+								</div>
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
@@ -59,16 +281,24 @@
 					Ready Orders
 				</h1>
 
-				<div class="card" style="width: 18rem; outline: 1px grey" ng-repeat="(key, order) in ready_orders">
-			  		<div class="card-body">
-						<h1>{{order.priority}}</h1>
-			    		<h5 class="card-title">{{order.table_id}}</h5>
-						<div ng-repeat="specific_orders in order.order_list">
-			    			<h6 class="card-subtitle mb-2 text-muted" style="margin-top:0">{{specific_orders}}</h6>
+				<div class="card" style="width: 20rem; outline: 1px grey" ng-repeat="(key, order) in ready_orders">
+					<div class="card-body">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-xs-2">
+									<h1>{{order.priority}}</h1>
+								</div>
+								<div class="col-xs-10">
+						    		<h5 class="card-title">{{order.table_id}}</h5>
+									<div ng-repeat="specific_orders in order.order_list">
+						    			<h6 class="card-subtitle mb-2 text-muted" style="margin-top:0">{{specific_orders}}</h6>
+									</div>
+						    		<p class="card-text">Special Requests: {{order.special_requests}}</p>
+									<a href="#" class="card-link" ng-click="order_not_ready(key)">Complete Order</a>
+						    		<a href="#" class="card-link" ng-click="delete_order(key)">Delete Order</a>
+								</div>
+							</div>
 						</div>
-			    		<p class="card-text">Special Requests: {{order.special_requests}}</p>
-						<a href="#" class="card-link" ng-click="order_not_ready(key)">Accidental Ready</a>
-			    		<a href="#" class="card-link" ng-click="delete_order(key)">Delete Order</a>
 			  		</div>
 				</div>
 			</div>
