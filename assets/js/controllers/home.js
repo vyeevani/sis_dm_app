@@ -7,6 +7,7 @@ angular.module('app.controllers.home', []).controller('homePageController', func
     $scope.plain_dosa = 0;
     $scope.onion_dosa = 0;
     $scope.masala_dosa = 0;
+    $scope.onion_masala_dosa = 0;
     $scope.spring_dosa = 0;
     $scope.andhra_spicy_dosa = 0;
     $scope.madurai_masala_dosa = 0;
@@ -16,6 +17,7 @@ angular.module('app.controllers.home', []).controller('homePageController', func
     $scope.plain_uthappam = 0;
     $scope.onion_uthappam = 0;
     $scope.chilli_uthappam = 0;
+    $scope.onion_chilli_uthappam = 0;
     $scope.podi_uthappam = 0;
     $scope.tomato_uthappam = 0;
     $scope.kara_uthappam = 0;
@@ -57,6 +59,7 @@ angular.module('app.controllers.home', []).controller('homePageController', func
         order_list = add_order_list($scope.plain_dosa, order_list, "Plain Dosa");
         order_list = add_order_list($scope.onion_dosa, order_list, "Onion Dosa");
         order_list = add_order_list($scope.masala_dosa, order_list, "Masala Dosa");
+        order_list = add_order_list($scope.onion_masala_dosa, order_list, "Onion/Masala Dosa");
         order_list = add_order_list($scope.spring_dosa, order_list, "Spring Dosa");
         order_list = add_order_list($scope.andhra_spicy_dosa, order_list, "Andhra Spicy Dosa");
         order_list = add_order_list($scope.madurai_masala_dosa, order_list, "Madurai Masala Dosa");
@@ -66,6 +69,7 @@ angular.module('app.controllers.home', []).controller('homePageController', func
         order_list = add_order_list($scope.plain_uthappam, order_list, "Plain Uthappam");
         order_list = add_order_list($scope.onion_uthappam, order_list, "Onion Uthappam");
         order_list = add_order_list($scope.chilli_uthappam, order_list, "Chilli Uthappam");
+        order_list = add_order_list($scope.onion_chilli_uthappam, order_list, "Onion/Chilli Uthappam");
         order_list = add_order_list($scope.podi_uthappam, order_list, "Podi Uthappam");
         order_list = add_order_list($scope.tomato_uthappam, order_list, "Tomato Uthappam");
         order_list = add_order_list($scope.kara_uthappam, order_list, "kara_uthappam");
@@ -73,11 +77,12 @@ angular.module('app.controllers.home', []).controller('homePageController', func
         add_order({table_id: "Table: " + $scope.table_id, order_list: order_list,
                 special_requests: $scope.special_requests + "", active_order:true, timestamp: timestamp});
 
-                
+
 
         $scope.plain_dosa = 0;
         $scope.onion_dosa = 0;
         $scope.masala_dosa = 0;
+        $scope.onion_masala_dosa = 0;
         $scope.spring_dosa = 0;
         $scope.andhra_spicy_dosa = 0;
         $scope.madurai_masala_dosa = 0;
@@ -87,6 +92,7 @@ angular.module('app.controllers.home', []).controller('homePageController', func
         $scope.plain_uthappam = 0;
         $scope.onion_uthappam = 0;
         $scope.chilli_uthappam = 0;
+        $scope.onion_chilli_uthappam = 0;
         $scope.podi_uthappam = 0;
         $scope.tomato_uthappam = 0;
         $scope.kara_uthappam = 0;
